@@ -1,0 +1,5 @@
+Scriptname TrueStorms:TrueStorms_ConfigHandlerScript
+
+Function ChangeTrueStormsGlobalSetting(GlobalVariable globalToChange, Int valueToUpdate)
+	globalToChange.SetValue(valueToUpdate)
+EndFunction

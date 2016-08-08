@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+	<moduleName>True Storms: Wasteland Edition v1.4</moduleName>
+	
+	<!-- Files that we install no matter what options were chosen, the core files, including the sounds/textures/meshes/base plug-in -->
+	<requiredInstallFiles>
+		<folder source="00 - Core Files" destination="" />
+	</requiredInstallFiles>
+	
+	<installSteps order="Explicit">
+		<installStep name="Page 1 - Main and DLC">
+			<optionalFileGroups order="Explicit">
+				<group name="Main Files" type="SelectAny">
+					<plugins order="Explicit">
+						<plugin name="True Storms (required)">
+							<description>Core files for True Storms (required.)</description>
+							<image path="fomod\images\03-volatility.jpg" />
+							<conditionFlags>
+								<flag name="DummyOption">ToPleaseNMM</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Required" />
+							</typeDescriptor>
+						</plugin>
+						<plugin name="Far Harbor DLC (optional)">
+							<description>Brings the True Storms experience to the island of Far Harbor, with heavy rains, and other new fog weathers.  FAR HARBOR DLC REQUIRED.</description>
+							<image path="fomod\images\01a-FarHarbor.jpg" />
+							<conditionFlags>
+								<flag name="DLCFarHarbor">True</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+					</plugins>
+				</group>
+			</optionalFileGroups>
+		</installStep>
+
+		<installStep name="Page 2 - Dangerous Glowing Sea">
+			<optionalFileGroups order="Explicit">
+				<group name="Dangerous Glowing Sea" type="SelectExactlyOne">
+					<plugins order="Explicit">
+					
+						<plugin name="No change (default)">
+							<description>By default the Glowing Sea is not very dangerous.  Fully unclothed, it gives 6 rads/sec.  Wearing just a Vault Suit it's about 2/sec. How boring!  Selecting this option will do nothing, and leave vanilla values as-is.</description>
+							<image path="fomod\images\07-glowingsea.jpg" />
+							<conditionFlags>
+								<flag name="GlowingSeaRads">Vanilla</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+
+						<plugin name="2x Damage">
+							<description>Double the damage from the glowing sea (12 rads/sec.)</description>
+							<image path="fomod\images\07-glowingsea.jpg" />
+							<conditionFlags>
+								<flag name="GlowingSeaRads">2X</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+						
+						<plugin name="3x Damage">
+							<description>Triple the damage from the glowing sea (18 rads/sec.)</description>
+							<image path="fomod\images\07-glowingsea.jpg" />
+							<conditionFlags>
+								<flag name="GlowingSeaRads">3X</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+
+						<plugin name="4x Damage">
+							<description>Quadruple the damage from the glowing sea (24 rads/sec.)</description>
+							<image path="fomod\images\07-glowingsea.jpg" />
+							<conditionFlags>
+								<flag name="GlowingSeaRads">4X</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+
+						<plugin name="8x Damage">
+							<description>Octuple the damage from the glowing sea (48 rads/sec! Ouch!)</description>
+							<image path="fomod\images\07-glowingsea.jpg" />
+							<conditionFlags>
+								<flag name="GlowingSeaRads">8X</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+						
+						
+					</plugins>
+
+				</group>
+			</optionalFileGroups>
+		</installStep>	
+
+		
+		<installStep name="Page 3 - Dangerous Far Harbor">
+			<visible>
+				<flagDependency flag="DLCFarHarbor" value="True" />
+			</visible>
+			<optionalFileGroups order="Explicit">
+				<group name="Dangerous Far Harbor" type="SelectExactlyOne">
+					<plugins order="Explicit">
+					
+						<plugin name="No change (default)">
+							<description>Far Harbor has pockets of radiation mist all over the island.  By default these give you less than 1 rad/sec if you're wearing just the Vault suit.  Fully unclothed it's 3 rads/sec. Selecting this option will not change this level of damage.</description>
+							<image path="fomod\images\FH-Rads.jpg" />
+							<conditionFlags>
+								<flag name="FarHarborRads">Vanilla</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+
+						<plugin name="2x Damage">
+							<description>Double the damage from the pockets of radiation fog on Far Harbor (6 rads/sec.)</description>
+							<image path="fomod\images\FH-Rads.jpg" />
+							<conditionFlags>
+								<flag name="FarHarborRads">2X</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+						
+						<plugin name="3x Damage">
+							<description>Triple the damage from the pockets of radiation fog on Far Harbor (9 rads/sec.)</description>
+							<image path="fomod\images\FH-Rads.jpg" />
+							<conditionFlags>
+								<flag name="FarHarborRads">3X</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+
+						<plugin name="4x Damage">
+							<description>Quadruple the damage from the pockets of radiation fog on Far Harbor (12 rads/sec.)</description>
+							<image path="fomod\images\FH-Rads.jpg" />
+							<conditionFlags>
+								<flag name="FarHarborRads">4X</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+
+						<plugin name="8x Damage">
+							<description>Octuple the damage from the pockets of radiation fog on Far Harbor (24 rads/sec! Ouch!  Only for crazy people who REALLY love RadAway.)</description>
+							<image path="fomod\images\FH-Rads.jpg" />
+							<conditionFlags>
+								<flag name="FarHarborRads">8X</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+						
+						
+					</plugins>
+
+				</group>
+			</optionalFileGroups>
+		</installStep>		
+
+		<installStep name="Page 4 - Sunset Time">
+			<optionalFileGroups order="Explicit">
+				<group name="Sunset Time" type="SelectExactlyOne">
+					<plugins order="Explicit">
+					
+						<plugin name="Earlier Sunset (default)">
+							<description>Makes the sun set by 6pm, fully dark by about 7pm. Goes GREAT with Darker Nights. (In Boston, U.S. in October 2277, the sun sets by 6:25pm)</description>
+							<image path="fomod\images\04-sunset.jpg" />
+							<conditionFlags>
+								<flag name="WeatherSunset">Earlier</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+
+						<plugin name="Standard Vanilla">
+							<description>No change. The sun fully sets around 10:30-11:00pm.</description>
+							<image path="fomod\images\04-sunset.jpg" />
+							<conditionFlags>
+								<flag name="WeatherSunset">Vanilla</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+						
+					</plugins>
+				</group>
+			</optionalFileGroups>
+		</installStep>
+		
+		<installStep name="Page 5 - Heavy Fogs">
+			<optionalFileGroups order="Explicit">
+				<group name="Heavy Fogs" type="SelectExactlyOne">
+					<plugins order="Explicit">
+					
+						<plugin name="New Heavy Fogs (default)">
+							<description>New heavy rolling fogs during foggy weathers; very atmospheric, highly recommended.</description>
+							<image path="fomod\images\05-fogs.jpg" />
+							<conditionFlags>
+								<flag name="HeavyFogs">HeavyFogs</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+
+						<plugin name="No Heavy Fogs">
+							<description>For lower-end systems. Uses vanilla fog effects in place of True Storms' heavy fogs.  Use this if Heavy Fog option is causing too much FPS loss.</description>
+							<image path="fomod\images\06-nofogs.jpg" />
+							<conditionFlags>
+								<flag name="HeavyFogs">Vanilla</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+						
+					</plugins>
+				</group>
+			</optionalFileGroups>
+		</installStep>		
+		
+	</installSteps>
+		
+
+	<!-- ====================== FILE SELECTION AND CONDITIONS ======================-->
+
+	<conditionalFileInstalls>
+		<patterns>
+
+			<!-- STEP 1: DLC -->
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="DLCFarHarbor" value="True" />
+				</dependencies>
+				<files>
+					<folder source="01 - Far Harbor" destination="" priority="0"/>
+				</files>
+			</pattern>
+		
+
+			<!-- STEP 2: GLOWING SEA RADIATION -->
+			
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="GlowingSeaRads" value="2X" />
+				</dependencies>
+				<files>
+					<file source="04 - Dangerous Glowing Sea\2x\TrueStormsFO4-GlowingSeaExtraRads.esp" destination="TrueStormsFO4-GlowingSeaExtraRads.esp"/>
+				</files>
+			</pattern>			
+
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="GlowingSeaRads" value="3X" />
+				</dependencies>
+				<files>
+					<file source="04 - Dangerous Glowing Sea\3x\TrueStormsFO4-GlowingSeaExtraRads.esp" destination="TrueStormsFO4-GlowingSeaExtraRads.esp"/>
+				</files>
+			</pattern>			
+			
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="GlowingSeaRads" value="4X" />
+				</dependencies>
+				<files>
+					<file source="04 - Dangerous Glowing Sea\4x\TrueStormsFO4-GlowingSeaExtraRads.esp" destination="TrueStormsFO4-GlowingSeaExtraRads.esp"/>
+				</files>
+			</pattern>			
+			
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="GlowingSeaRads" value="8X" />
+				</dependencies>
+				<files>
+					<file source="04 - Dangerous Glowing Sea\8x\TrueStormsFO4-GlowingSeaExtraRads.esp" destination="TrueStormsFO4-GlowingSeaExtraRads.esp"/>
+				</files>
+			</pattern>
+		
+		<!-- STEP 3: FAR HARBOR RADIATION -->
+		
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="FarHarborRads" value="2X" />
+				</dependencies>
+				<files>
+					<file source="05 - Dangerous Far Harbor\2x\TrueStormsFO4-FarHarborExtraRads.esp" destination="TrueStormsFO4-FarHarborExtraRads.esp"/>
+				</files>
+			</pattern>			
+
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="FarHarborRads" value="3X" />
+				</dependencies>
+				<files>
+					<file source="05 - Dangerous Far Harbor\3x\TrueStormsFO4-FarHarborExtraRads.esp" destination="TrueStormsFO4-FarHarborExtraRads.esp"/>
+				</files>
+			</pattern>			
+			
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="FarHarborRads" value="4X" />
+				</dependencies>
+				<files>
+					<file source="05 - Dangerous Far Harbor\4x\TrueStormsFO4-FarHarborExtraRads.esp" destination="TrueStormsFO4-FarHarborExtraRads.esp"/>
+				</files>
+			</pattern>			
+			
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="FarHarborRads" value="8X" />
+				</dependencies>
+				<files>
+					<file source="05 - Dangerous Far Harbor\8x\TrueStormsFO4-FarHarborExtraRads.esp" destination="TrueStormsFO4-FarHarborExtraRads.esp"/>
+				</files>
+			</pattern>	
+
+			<!-- STEP 4: SUNSET TIMES -->
+			
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="WeatherSunset" value="Earlier" />
+				</dependencies>
+				<files>
+					<file source="03 - Earlier Sunsets\TrueStormsFO4-EarlierSunsets.esp" destination="TrueStormsFO4-EarlierSunsets.esp"/>
+				</files>
+			</pattern>				
+			
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="DLCFarHarbor" value="True" />
+					<flagDependency flag="WeatherSunset" value="Earlier" />
+				</dependencies>
+				<files>
+					<file source="03 - Earlier Sunsets\TrueStormsFO4-EarlierSunsetsFH.esp" destination="TrueStormsFO4-EarlierSunsetsFH.esp"/>
+				</files>
+			</pattern>	
+			
+			<!-- STEP 5: FOG EFFECTS -->
+
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="HeavyFogs" value="Vanilla" />
+				</dependencies>
+				<files>
+					<folder source="02 - Performance Fog" destination="" priority="0"/>
+				</files>
+			</pattern>			
+		
+	</patterns>
+	</conditionalFileInstalls>
+</config>

@@ -1,0 +1,58 @@
+-------------------------------------------------
+TRUE STORMS v1.4
+by fadingsignal
+http://www.nexusmods.com/fallout4/mods/4472/?
+fadingsignalmods@gmail.com
+-------------------------------------------------
+
+CHANGELOG v1.4
+June 29 2016
+
+- Re-built with the Creation Kit
+- Fully configurable with new holotape (can turn each feature on/off)
+- New weather control holotape (displays current weather, can force any weather from vanilla, DLC, True Storms)
+- Far Harbor Add-On with all the heavy storm effects from True Storms plus a few new weathers (thick, deadly rad fog)
+- Optional "Deadly Far Harbor" add-on to increase the damage from the pockets of radiation on the island 2x, 3x, 4x, or 8x
+- Dynamic fog/wind particle "occlusion" -- no more fogs blowing thru walls! (can be turned on/off)
+- Craftable fog filters for Workshop-crafted structures to stop fogs blowing through those walls as well.
+- Sneak buffs for the player and companions during storms (can be turned on/off)
+- Configurable ghoul attacks during radiation storms (chance, frequency, amount, or can be turned off completely) -- no save bloat
+- Loads of small tweaks and adjustments to weathers, better balance of lightning/thunder strikes
+- Loads of new eerie radiation storm thunder sounds
+- Commonwealth Foggy re-build, new clouds/colors/etc. looks much better during the day, with 10% more Silent-Hill vibes :)
+- Wind / blowing fogs no longer blow thru the Prydwen main deck and other interiors that show outside weather
+- Glowing debris bits removed from wind during radiation rain 
+- Lots of little fixes that are too numerous to outline in detail
+- Fixed a vanilla bug where if you equip the hazmat suit, then take it off, you are still invincible to radiation.  This is similar to the Power Armor bug fixed by this mod in a previous version.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CHANGELOG v1.3.1
+Dec 11 2015
+
+v1.3.1
+
+- Installer wizard!
+- Fixed TWO MAJOR VANILLA bugs in the Glowing Sea: Fast travel stopping radiation, and radiation being less than 1 rad/sec after exiting Power Armor (jeeze, Bethesda!)
+- Spell no longer required to be added to player for radiation rain damage, this is now part of the vanilla system.  PLEASE REMOVE BEFORE UPGRADING.
+- Changed several weather IDs to be unique (I was taking over unused vanilla weather IDs before) PLEASE SEE STICKY FOR NEW IDs!  Old ones won't work!
+- Removed a commonwealth weather type from the Glowing Sea that was causing it to be sunny and radiation-free sometimes.
+- Fixed some other conditions causing inconsistent radiation with new True Storms weathers in the Glowing Sea.
+- Fixed one of the rainy weathers that was not showing wetness on the Power Armor visor.
+- Converted interior shack rain sounds to XWM, with fade in/out loop points. This may fix stuttering and/or playback issues for some of you, or sounds getting "stuck" after rain stops.
+- Fixed some conditions on heavy rain shack interior sounds to stop them from playing during light rains.
+- Added misc additional conditions on all rain sounds to suppress the engine from playing sounds in wrong places.
+- Renamed a few files to match Bethesda conventions, which may effect how the engine loads/loops certain sounds internally.
+- Fixed conditions for wooden interiors so light radiation rain sounds would play properly.
+- New add-on option for more dangerous Glowing Sea radiation (2x, 3x, 4x, 8x -- sorry but 6 rads/sec in vanilla is FAR too weak)
+- All climate / volatility / sunset variations available in installer
+- Various small tweaks
+- Highly experimental sneak buffs during storms - use at your own risk!  See description and sticky post for details.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CHANGELOG v1.2
+
+- Fixed wetness shader during dust storms (engine does this automatically when using any camera particle effects, so had to remove some dust effects)
+- All sounds resampled to a consistent 48khz in an effort to combat audio stuttering people were having, which appears to be a bitrate issue
+- Updated rain materials, removed new normal map which is not used by the engine
