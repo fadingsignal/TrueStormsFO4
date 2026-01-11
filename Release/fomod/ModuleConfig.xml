@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
-	<moduleName>True Storms: Wasteland Edition v1.4</moduleName>
+	<moduleName>True Storms: Wasteland Edition v2.0.2</moduleName>
 	
 	<!-- Files that we install no matter what options were chosen, the core files, including the sounds/textures/meshes/base plug-in -->
 	<requiredInstallFiles>
@@ -14,7 +14,7 @@
 					<plugins order="Explicit">
 						<plugin name="True Storms (required)">
 							<description>Core files for True Storms (required.)</description>
-							<image path="fomod\images\03-volatility.jpg" />
+							<image path="fomod\images\00-DLC-selection.jpg" />
 							<conditionFlags>
 								<flag name="DummyOption">ToPleaseNMM</flag>
 							</conditionFlags>
@@ -24,9 +24,19 @@
 						</plugin>
 						<plugin name="Far Harbor DLC (optional)">
 							<description>Brings the True Storms experience to the island of Far Harbor, with heavy rains, and other new fog weathers.  FAR HARBOR DLC REQUIRED.</description>
-							<image path="fomod\images\01a-FarHarbor.jpg" />
+							<image path="fomod\images\00-DLC-selection.jpg" />
 							<conditionFlags>
 								<flag name="DLCFarHarbor">True</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+						<plugin name="Nuka-World DLC (optional)">
+							<description>Brings the True Storms experience to the deserts of Nuka-World.  NUKA-WORLD DLC REQUIRED.</description>
+							<image path="fomod\images\00-DLC-selection.jpg" />
+							<conditionFlags>
+								<flag name="DLCNukaWorld">True</flag>
 							</conditionFlags>
 							<typeDescriptor>
 								<type name="Optional" />
@@ -37,7 +47,36 @@
 			</optionalFileGroups>
 		</installStep>
 
-		<installStep name="Page 2 - Dangerous Glowing Sea">
+		<installStep name="Page 2 - Weather Chances">
+			<optionalFileGroups order="Explicit">
+				<group name="Weather Chances" type="SelectExactlyOne">
+					<plugins order="Explicit">
+						<plugin name="True Storms Chances (recommended)">
+							<description>Increased chances of experiencing the new weather types. Recommended.</description>
+							<image path="fomod\images\02-weatherchances.jpg" />
+							<conditionFlags>
+								<flag name="WeatherChances">TrueStorms</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+						<plugin name="Vanilla Chances">
+							<description>Weather chances are more in-line with vanilla. Be aware that storms will be MUCH more rare.</description>
+							<image path="fomod\images\02-weatherchances.jpg" />
+							<conditionFlags>
+								<flag name="WeatherChances">Vanilla</flag>
+							</conditionFlags>
+							<typeDescriptor>
+								<type name="Optional" />
+							</typeDescriptor>
+						</plugin>
+					</plugins>
+				</group>
+			</optionalFileGroups>
+		</installStep>
+
+		<installStep name="Page 3 - Dangerous Glowing Sea">
 			<optionalFileGroups order="Explicit">
 				<group name="Dangerous Glowing Sea" type="SelectExactlyOne">
 					<plugins order="Explicit">
@@ -105,7 +144,7 @@
 		</installStep>	
 
 		
-		<installStep name="Page 3 - Dangerous Far Harbor">
+		<installStep name="Page 4 - Dangerous Far Harbor">
 			<visible>
 				<flagDependency flag="DLCFarHarbor" value="True" />
 			</visible>
@@ -175,7 +214,7 @@
 			</optionalFileGroups>
 		</installStep>		
 
-		<installStep name="Page 4 - Sunset Time">
+		<installStep name="Page 5 - Sunset Time">
 			<optionalFileGroups order="Explicit">
 				<group name="Sunset Time" type="SelectExactlyOne">
 					<plugins order="Explicit">
@@ -207,7 +246,7 @@
 			</optionalFileGroups>
 		</installStep>
 		
-		<installStep name="Page 5 - Heavy Fogs">
+		<installStep name="Page 6 - Heavy Fogs">
 			<optionalFileGroups order="Explicit">
 				<group name="Heavy Fogs" type="SelectExactlyOne">
 					<plugins order="Explicit">
@@ -247,25 +286,74 @@
 	<conditionalFileInstalls>
 		<patterns>
 
-			<!-- STEP 1: DLC -->
+			<!-- STEP 1: DLC and patch -->
 			<pattern>
 				<dependencies operator="And">
 					<flagDependency flag="DLCFarHarbor" value="True" />
 				</dependencies>
 				<files>
-					<folder source="01 - Far Harbor" destination="" priority="0"/>
+					<file source="01 - DLC\TrueStormsFO4-FarHarbor.esp" destination="TrueStormsFO4-FarHarbor.esp" />
 				</files>
 			</pattern>
-		
 
-			<!-- STEP 2: GLOWING SEA RADIATION -->
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="DLCNukaWorld" value="True" />
+				</dependencies>
+				<files>
+					<file source="01 - DLC\TrueStormsFO4-NukaWorld.esp" destination="TrueStormsFO4-NukaWorld.esp" />
+				</files>
+			</pattern>
+
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="DLCFarHarbor" value="True" />
+					<flagDependency flag="DLCNukaWorld" value="True" />
+				</dependencies>
+				<files>
+					<file source="01 - DLC\TrueStormsFO4-FarHarbor-NukaWorld-Patch.esp" destination="TrueStormsFO4-FarHarbor-NukaWorld-Patch.esp" />
+				</files>
+			</pattern>
+
+			<!-- STEP 2: WEATHER CHANCES -->
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="WeatherChances" value="Vanilla" />
+				</dependencies>
+				<files>
+					<file source="02 - Chances\TrueStormsFO4-VanillaChances.esp" destination="TrueStormsFO4-VanillaChances.esp" />
+				</files>
+			</pattern>
+
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="WeatherChances" value="Vanilla" />
+					<flagDependency flag="DLCFarHarbor" value="True" />
+				</dependencies>
+				<files>
+					<file source="02 - Chances\TrueStormsFO4-VanillaChances-FarHarbor.esp" destination="TrueStormsFO4-VanillaChances-FarHarbor.esp" />
+				</files>
+			</pattern>
+
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="WeatherChances" value="Vanilla" />
+					<flagDependency flag="DLCNukaWorld" value="True" />
+				</dependencies>
+				<files>
+					<file source="02 - Chances\TrueStormsFO4-VanillaChances-NukaWorld.esp" destination="TrueStormsFO4-VanillaChances-NukaWorld.esp" />
+				</files>
+			</pattern>
+
+
+			<!-- STEP 3: GLOWING SEA RADIATION -->
 			
 			<pattern>
 				<dependencies operator="And">
 					<flagDependency flag="GlowingSeaRads" value="2X" />
 				</dependencies>
 				<files>
-					<file source="04 - Dangerous Glowing Sea\2x\TrueStormsFO4-GlowingSeaExtraRads.esp" destination="TrueStormsFO4-GlowingSeaExtraRads.esp"/>
+					<file source="05 - Dangerous Glowing Sea\TrueStormsFO4-GlowingSeaExtraRads2X.esp" destination="TrueStormsFO4-GlowingSeaExtraRads2X.esp" />
 				</files>
 			</pattern>			
 
@@ -274,7 +362,7 @@
 					<flagDependency flag="GlowingSeaRads" value="3X" />
 				</dependencies>
 				<files>
-					<file source="04 - Dangerous Glowing Sea\3x\TrueStormsFO4-GlowingSeaExtraRads.esp" destination="TrueStormsFO4-GlowingSeaExtraRads.esp"/>
+					<file source="05 - Dangerous Glowing Sea\TrueStormsFO4-GlowingSeaExtraRads3X.esp" destination="TrueStormsFO4-GlowingSeaExtraRads3X.esp" />
 				</files>
 			</pattern>			
 			
@@ -283,7 +371,7 @@
 					<flagDependency flag="GlowingSeaRads" value="4X" />
 				</dependencies>
 				<files>
-					<file source="04 - Dangerous Glowing Sea\4x\TrueStormsFO4-GlowingSeaExtraRads.esp" destination="TrueStormsFO4-GlowingSeaExtraRads.esp"/>
+					<file source="05 - Dangerous Glowing Sea\TrueStormsFO4-GlowingSeaExtraRads4X.esp" destination="TrueStormsFO4-GlowingSeaExtraRads4X.esp" />
 				</files>
 			</pattern>			
 			
@@ -292,7 +380,7 @@
 					<flagDependency flag="GlowingSeaRads" value="8X" />
 				</dependencies>
 				<files>
-					<file source="04 - Dangerous Glowing Sea\8x\TrueStormsFO4-GlowingSeaExtraRads.esp" destination="TrueStormsFO4-GlowingSeaExtraRads.esp"/>
+					<file source="05 - Dangerous Glowing Sea\TrueStormsFO4-GlowingSeaExtraRads8X.esp" destination="TrueStormsFO4-GlowingSeaExtraRads8X.esp" />
 				</files>
 			</pattern>
 		
@@ -303,7 +391,7 @@
 					<flagDependency flag="FarHarborRads" value="2X" />
 				</dependencies>
 				<files>
-					<file source="05 - Dangerous Far Harbor\2x\TrueStormsFO4-FarHarborExtraRads.esp" destination="TrueStormsFO4-FarHarborExtraRads.esp"/>
+					<file source="06 - Dangerous Far Harbor\TrueStormsFO4-FarHarborExtraRads2X.esp" destination="TrueStormsFO4-FarHarborExtraRads2X.esp" />
 				</files>
 			</pattern>			
 
@@ -312,7 +400,7 @@
 					<flagDependency flag="FarHarborRads" value="3X" />
 				</dependencies>
 				<files>
-					<file source="05 - Dangerous Far Harbor\3x\TrueStormsFO4-FarHarborExtraRads.esp" destination="TrueStormsFO4-FarHarborExtraRads.esp"/>
+					<file source="06 - Dangerous Far Harbor\TrueStormsFO4-FarHarborExtraRads3X.esp" destination="TrueStormsFO4-FarHarborExtraRads3X.esp" />
 				</files>
 			</pattern>			
 			
@@ -321,7 +409,7 @@
 					<flagDependency flag="FarHarborRads" value="4X" />
 				</dependencies>
 				<files>
-					<file source="05 - Dangerous Far Harbor\4x\TrueStormsFO4-FarHarborExtraRads.esp" destination="TrueStormsFO4-FarHarborExtraRads.esp"/>
+					<file source="06 - Dangerous Far Harbor\TrueStormsFO4-FarHarborExtraRads4X.esp" destination="TrueStormsFO4-FarHarborExtraRads4X.esp" />
 				</files>
 			</pattern>			
 			
@@ -330,31 +418,66 @@
 					<flagDependency flag="FarHarborRads" value="8X" />
 				</dependencies>
 				<files>
-					<file source="05 - Dangerous Far Harbor\8x\TrueStormsFO4-FarHarborExtraRads.esp" destination="TrueStormsFO4-FarHarborExtraRads.esp"/>
+					<file source="06 - Dangerous Far Harbor\TrueStormsFO4-FarHarborExtraRads8X.esp" destination="TrueStormsFO4-FarHarborExtraRads8X.esp" />
 				</files>
 			</pattern>	
 
 			<!-- STEP 4: SUNSET TIMES -->
-			
+
 			<pattern>
 				<dependencies operator="And">
 					<flagDependency flag="WeatherSunset" value="Earlier" />
+					<flagDependency flag="WeatherChances" value="TrueStorms" />
 				</dependencies>
 				<files>
-					<file source="03 - Earlier Sunsets\TrueStormsFO4-EarlierSunsets.esp" destination="TrueStormsFO4-EarlierSunsets.esp"/>
+					<file source="04 - Earlier Sunsets\TrueStormsFO4-EarlierSunsets.esp" destination="TrueStormsFO4-EarlierSunsets.esp" />
 				</files>
-			</pattern>				
+			</pattern>
+
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="WeatherSunset" value="Earlier" />
+					<flagDependency flag="WeatherChances" value="Vanilla" />
+				</dependencies>
+				<files>
+					<file source="04 - Earlier Sunsets\TrueStormsFO4-EarlierSunsets-VanillaChances.esp" destination="TrueStormsFO4-EarlierSunsets-VanillaChances.esp" />
+				</files>
+			</pattern>	
 			
 			<pattern>
 				<dependencies operator="And">
 					<flagDependency flag="DLCFarHarbor" value="True" />
 					<flagDependency flag="WeatherSunset" value="Earlier" />
+					<flagDependency flag="WeatherChances" value="TrueStorms" />
 				</dependencies>
 				<files>
-					<file source="03 - Earlier Sunsets\TrueStormsFO4-EarlierSunsetsFH.esp" destination="TrueStormsFO4-EarlierSunsetsFH.esp"/>
+					<file source="04 - Earlier Sunsets\TrueStormsFO4-EarlierSunsetsFH.esp" destination="TrueStormsFO4-EarlierSunsetsFH.esp" />
 				</files>
 			</pattern>	
+
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="DLCFarHarbor" value="True" />
+					<flagDependency flag="WeatherSunset" value="Earlier" />
+					<flagDependency flag="WeatherChances" value="Vanilla" />
+				</dependencies>
+				<files>
+					<file source="04 - Earlier Sunsets\TrueStormsFO4-EarlierSunsets-VanillaChances-FH.esp" destination="TrueStormsFO4-EarlierSunsets-VanillaChances-FH.esp" />
+				</files>
+			</pattern>	
+
 			
+			<pattern>
+				<dependencies operator="And">
+					<flagDependency flag="DLCNukaWorld" value="True" />
+					<flagDependency flag="WeatherSunset" value="Earlier" />
+					<!-- climate form in NW has no weather in it so no special plugin, works for both chance options -->
+				</dependencies>
+				<files>
+					<file source="04 - Earlier Sunsets\TrueStormsFO4-EarlierSunsetsNW.esp" destination="TrueStormsFO4-EarlierSunsetsNW.esp" />
+				</files>
+			</pattern>	
+
 			<!-- STEP 5: FOG EFFECTS -->
 
 			<pattern>
@@ -362,7 +485,7 @@
 					<flagDependency flag="HeavyFogs" value="Vanilla" />
 				</dependencies>
 				<files>
-					<folder source="02 - Performance Fog" destination="" priority="0"/>
+					<folder source="03 - Performance Fog" destination="" priority="0" />
 				</files>
 			</pattern>			
 		
