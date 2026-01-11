@@ -38,10 +38,27 @@ Group Companions
 	Actor Property DLC03_CompanionOldLongfellowRef Auto Const ;Far Harbor
 EndGroup
 
-
 ;No longer used
 Function ChangeTrueStormsGlobalSetting(GlobalVariable globalToChange, Int valueToUpdate)
 	globalToChange.SetValue(valueToUpdate)
+EndFunction
+
+;Synchronize GlobalVariable with spells in the event that GlobalVariable is changed in the plugin
+;Called from external scripts later because this quest is set to "Start Game Enabled"
+Bool Function SyncPlayerEffectsWithGlobals()
+
+	;If this was set prior, we'll need to restore it once we sync things up since it gets reset
+	Int iGhoulHoardChance = TrueStorms_Config_GhoulHoardChance.GetValueInt()
+
+	If(TrueStorms_Config_PlayerEffectsEnabled.GetValueInt() == 1)
+		TurnOnPlayerEffects()
+		If(iGhoulHoardChance > 0)
+			SetGhoulHoardChance(iGhoulHoardChance)
+		EndIf
+	Else
+		TurnOffPlayerEffects()
+	EndIf
+	return true ;this always returns true because we just need to check if it even ran
 EndFunction
 
 ;Have simple methods to call from fragments just to keep it very very clear 

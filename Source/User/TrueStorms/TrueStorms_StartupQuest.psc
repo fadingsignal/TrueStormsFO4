@@ -1,6 +1,7 @@
 Scriptname TrueStorms:TrueStorms_StartupQuest extends Quest
 
 Quest Property MQ102 Auto Const
+TrueStorms:TrueStorms_ConfigQuest Property ConfigQuest Auto Const
 Int Property CharGenStageToWatch = 10 Auto Const
 Holotape Property TrueStorms_Config_Holotape Auto Const
 Holotape Property TrueStorms_WeatherControl_Holotape Auto Const
@@ -17,6 +18,7 @@ Function CheckStageToSet()
 	if MQ102.GetStageDone(ChargenStageToWatch) == true
 		AddHolotapeToPlayerInventory()
 		UnregisterForRemoteEvent(MQ102, "OnStageSet")
+		ConfigQuest.SyncPlayerEffectsWithGlobals() ;Ensure player effects are set properly on game to match what's in the plugin
 		Stop()
 	else
 		RegisterForRemoteEvent(MQ102, "OnStageSet")

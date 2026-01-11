@@ -1,0 +1,1 @@
+- Fixed an issue introduced in 2.0 that would cause a mismatch in configuration settings, making things like ghoul attacks not function properly.
