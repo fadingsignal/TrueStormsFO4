@@ -137,6 +137,46 @@ TSChangeWeather(TS_DLC03_RainWeatherMisty)
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_Terminal_18
+Function Fragment_Terminal_18(ObjectReference akTerminalRef)
+;BEGIN CODE
+TSChangeWeather(DLC03_RainWeather)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_19
+Function Fragment_Terminal_19(ObjectReference akTerminalRef)
+;BEGIN CODE
+TSChangeWeather(TS_NukaWorldDustMedium)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_20
+Function Fragment_Terminal_20(ObjectReference akTerminalRef)
+;BEGIN CODE
+TSChangeWeather(TS_NukaWorldRainLight)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_21
+Function Fragment_Terminal_21(ObjectReference akTerminalRef)
+;BEGIN CODE
+TSChangeWeather(TS_NukaWorldFoggy)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_Terminal_22
+Function Fragment_Terminal_22(ObjectReference akTerminalRef)
+;BEGIN CODE
+TSChangeWeather(TS_NukaWorldDustyHeavy)
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
 
@@ -159,6 +199,12 @@ Weather Property TS_DLC03_RadStormRainHeavy Auto Const
 Weather Property TS_DLC03_RadStormRainLight Auto Const
 Weather Property TS_DLC03_RainWeatherLight Auto Const
 Weather Property TS_DLC03_RainWeatherMisty Auto Const
+
+Weather Property DLC04NukaWorldRain Auto Const
+Weather Property TS_NukaWorldDustMedium Auto Const
+Weather Property TS_NukaWorldRainLight Auto Const
+Weather Property TS_NukaWorldFoggy Auto Const
+Weather Property TS_NukaWorldDustyHeavy Auto Const
 
 GlobalVariable Property TrueStorms_WeatherControlUseForce Auto Const
 
