@@ -1,0 +1,24 @@
+Version 2.0.2
+	Fixed missing ESM flag on the TrueStormsFO4.esm (forgot to turn it back on after editing, oops)
+	Re-fixed the recipes for the fog filters that were using steel scrap instead of steel
+
+Version 2.0.1
+	Fixed some missed sound records in the Far Harbor + Nuka-World patch.
+
+Version 2.0
+	This is a maintenance, clean-up, and installer update, no urgent need to update if you are mid-game currently.
+	ALL plugins besides main ESM are now ESP-FE (ESL-flagged ESPs!) freeing up load order slots.
+	FOMOD has been updated to include all DLC and options; no more confusion or manual steps.
+	All DLC add-ons re-worked for better patching.
+	Dust storms no longer take place in the Commonwealth. These are now in Nuka-World only.
+	Vanilla weather chances option updated for Far Harbor and Nuka-World.
+	Vanilla weather chances + earlier sunsets patches added.
+	Minor cleanup throughout.
+	Major version increment to 2.0 due to Far Harbor and Nuka-World being compacted and turned into ESP-FE which "breaks" prior versions.
+	True Storms effects are now ON by default. Open holotape to further tweak, enable ghoul attacks, etc.
+
+Version 1.4.3
+	Fixed a long-standing issue with the fog filter recipes using Steel Scrap instead of Steel component
+
+Version 1.4.2
+	Fixed material files for light rains, which were not being detected by ENB Rain
